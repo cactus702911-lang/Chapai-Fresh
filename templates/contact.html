@@ -1,0 +1,91 @@
+<!-- Breadcrumbs -->
+<div class="bg-brand-50 border-b border-brand-100 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs sm:text-sm text-slate-500 font-sans">
+    <a href="{{PATH_PREFIX}}index.html" class="hover:text-brand-500 transition-colors">হোম</a>
+    <span class="mx-2">/</span>
+    <span class="text-slate-800 font-medium">যোগাযোগ</span>
+  </div>
+</div>
+
+<!-- Header -->
+<section class="py-16 bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <span class="text-xs font-bold text-accent-orange uppercase tracking-widest">যোগাযোগ করুন</span>
+    <h1 class="text-3xl sm:text-5xl font-extrabold font-serif text-brand-600 tracking-tight">চাঁপাই ফ্রেশ-এর সাথে যোগাযোগ</h1>
+    <div class="w-16 h-1 bg-accent-orange mx-auto rounded-full mt-4"></div>
+  </div>
+</section>
+
+<!-- Content -->
+<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    
+    <!-- Info -->
+    <div class="space-y-8">
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold font-serif text-brand-600">আপনার মতামত জানাতে পারেন</h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">
+          আমাদের আমের সরবরাহ, বিশেষ মিষ্টির অর্ডার, পাইকারি আচার সরবরাহ বা কর্পোরেট গিফটিং সম্পর্কে কোনো প্রশ্ন আছে? আমাদের বার্তা লিখুন অথবা আমাদের মূল কেন্দ্রে সরাসরি যোগাযোগ করুন।
+        </p>
+      </div>
+
+      <div class="space-y-6 font-sans">
+        <div class="flex gap-4 items-start">
+          <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg flex-shrink-0">📍</span>
+          <div>
+            <h4 class="text-sm font-bold text-slate-700">কার্যালয়ের ঠিকানা</h4>
+            <p class="text-sm text-slate-500 mt-1">{{CONTACT_ADDRESS}}</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg flex-shrink-0">📞</span>
+          <div>
+            <h4 class="text-sm font-bold text-slate-700">কল সাপোর্ট</h4>
+            <p class="text-sm text-slate-500 mt-1">{{CONTACT_PHONE}}</p>
+            <p class="text-xs text-slate-400 mt-0.5">শনিবার - বৃহস্পতিবার: সকাল ৯:০০ টা - রাত ৮:০০ টা</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg flex-shrink-0">✉️</span>
+          <div>
+            <h4 class="text-sm font-bold text-slate-700">ইমেইল অনুসন্ধান</h4>
+            <p class="text-sm text-slate-500 mt-1">{{CONTACT_EMAIL}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-xs">
+      <h3 class="text-lg font-bold font-serif text-brand-600 mb-6">বার্তা পাঠান</h3>
+      <form onsubmit="event.preventDefault(); alert('বার্তাটি সফলভাবে পাঠানো হয়েছে!'); this.reset();" class="space-y-4 font-sans">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label for="contact-name" class="block text-xs font-semibold text-slate-500">নাম</label>
+            <input type="text" id="contact-name" required placeholder="উদা. রবিন খান" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2.5 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+          </div>
+          <div class="space-y-1">
+            <label for="contact-email" class="block text-xs font-semibold text-slate-500">ইমেইল এড্রেস</label>
+            <input type="email" id="contact-email" required placeholder="উদা. robin@gmail.com" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2.5 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label for="contact-subject" class="block text-xs font-semibold text-slate-500">বিষয়</label>
+          <input type="text" id="contact-subject" required placeholder="উদা. পাইকারি অর্ডার সংক্রান্ত" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2.5 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+        </div>
+
+        <div class="space-y-1">
+          <label for="contact-message" class="block text-xs font-semibold text-slate-500">আপনার বার্তা</label>
+          <textarea id="contact-message" required rows="4" placeholder="আপনার প্রশ্ন বা বিস্তারিত লিখুন..." class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2.5 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white rounded-lg font-bold text-sm shadow-md transition-all">বার্তা পাঠান</button>
+      </form>
+    </div>
+
+  </div>
+</section>

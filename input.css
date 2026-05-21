@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f4f8f5;
+  --color-brand-100: #e5eedf;
+  --color-brand-200: #cadfbd;
+  --color-brand-300: #a3ca93;
+  --color-brand-400: #75ab63;
+  --color-brand-500: #2c5e3b;
+  --color-brand-600: #224d2e;
+  --color-brand-700: #1a3c24;
+  --color-brand-800: #142c1b;
+  --color-brand-900: #0e1f13;
+  --color-brand-950: #060f09;
+
+  --color-accent-orange: #e07a5f;
+  --color-accent-yellow: #f4a261;
+  --color-accent-sand: #FAF8F5;
+  --color-accent-dark: #1e293b;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Outfit', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#FCFAF6] text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-brand-600;
+  }
+}
+
+/* Custom micro-animations & transitions */
+.transition-custom {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-glow:hover {
+  box-shadow: 0 10px 25px -5px rgba(44, 94, 59, 0.15), 0 8px 10px -6px rgba(44, 94, 59, 0.15);
+  transform: translateY(-2px);
+}
+
+.text-stroke-green {
+  -webkit-text-stroke: 1px #2c5e3b;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom loader spinner */
+.loader-spinner {
+  border-top-color: #2c5e3b;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

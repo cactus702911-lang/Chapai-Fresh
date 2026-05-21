@@ -1,0 +1,35 @@
+<!-- Breadcrumbs -->
+<div class="bg-brand-50 border-b border-brand-100 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs sm:text-sm text-slate-500 font-sans">
+    <a href="{{PATH_PREFIX}}index.html" class="hover:text-brand-500 transition-colors">হোম</a>
+    <span class="mx-2">/</span>
+    <span class="text-slate-800 font-medium">{{CATEGORY_NAME}}</span>
+  </div>
+</div>
+
+<!-- Category Header -->
+<section class="py-12 bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <h1 class="text-3xl sm:text-5xl font-extrabold font-serif text-brand-600 tracking-tight">{{CATEGORY_NAME}}</h1>
+    <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto font-sans leading-relaxed">{{CATEGORY_DESCRIPTION}}</p>
+    <div class="w-12 h-1 bg-accent-orange mx-auto rounded-full"></div>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
+  <!-- Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {{CATEGORY_PRODUCTS}}
+  </div>
+
+  <!-- Empty State -->
+  <div x-show="{{CATEGORY_EMPTY}}" class="bg-white rounded-2xl border border-brand-100 p-12 text-center shadow-xs" x-cloak>
+    <div class="text-4xl mb-4">🌾</div>
+    <h3 class="text-base font-bold text-slate-700 font-sans">এই ক্যাটাগরিতে কোনো পণ্য নেই</h3>
+    <p class="text-xs text-slate-400 mt-1 font-sans">আমরা বর্তমানে নতুন স্টক সংগ্রহ করছি। অনুগ্রহ করে কয়েক দিন পর আবার দেখুন!</p>
+    <a href="{{PATH_PREFIX}}shop.html" class="mt-4 inline-block px-4 py-2 bg-brand-500 text-white rounded-lg text-xs font-semibold hover:bg-brand-600 shadow-sm transition-all">অন্যান্য পণ্যগুলো দেখুন</a>
+  </div>
+
+</section>

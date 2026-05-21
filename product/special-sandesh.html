@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapai Special Sandesh | Chapai Fresh</title>
+  <meta name="description" content="Exquisite traditional milk sweet, cooked slowly with pure chhana (cottage cheese) and sugar, retaining the authentic granular texture and natural flav...">
+  <link href="../output.css" rel="stylesheet">
+  <!-- Alpine.js for interactive dropdowns, cart, mobile nav -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preload" as="image" href="../images/product-sandesh.jpg" fetchpriority="high">
+  <style>
+    [x-cloak] { display: none !important; }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-invoice, #printable-invoice * {
+        visibility: visible;
+      }
+      #printable-invoice {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+      }
+      .print\:hidden {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#FCFAF6] text-slate-800 font-sans flex flex-col min-h-screen" x-data="cartSystem()">
+
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-brand-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2 group">
+          <span class="text-2xl font-bold font-serif tracking-tight text-brand-500 group-hover:text-brand-600 transition-colors">
+            🌾 Chapai Fresh
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="../index.html" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">হোম</a>
+          <a href="../shop.html" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">শপ</a>
+          <a href="../index.html#categories" class="text-sm font-medium hover:text-brand-500 transition-colors py-2">ক্যাটাগরি</a>
+          <a href="../about.html" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">আমাদের সম্পর্কে</a>
+          <a href="../contact.html" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">যোগাযোগ</a>
+        </nav>
+
+        <!-- Right Side Icons -->
+        <div class="flex items-center gap-4">
+          <!-- Cart Icon -->
+          <button @click="openCart = true" class="relative p-2 text-slate-600 hover:text-brand-500 hover:bg-brand-50 rounded-full transition-all focus:outline-none" aria-label="Open Cart">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span x-show="cartCount > 0" x-text="cartCount" class="absolute -top-1 -right-1 bg-accent-orange text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm" x-cloak>0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-slate-600 hover:text-brand-500 hover:bg-brand-50 rounded-full transition-colors focus:outline-none" aria-label="Toggle Menu">
+            <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" x-cloak>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Panel -->
+    <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="md:hidden bg-white border-b border-brand-100 px-4 pt-2 pb-4 space-y-1 shadow-lg" x-cloak>
+      <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">হোম</a>
+      <a href="../shop.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">শপ</a>
+      <a href="../index.html#categories" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">ক্যাটাগরি</a>
+      <a href="../about.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">আমাদের সম্পর্কে</a>
+      <a href="../contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">যোগাযোগ</a>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="flex-grow">
+    <!-- Breadcrumbs -->
+<div class="bg-brand-50 border-b border-brand-100 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs sm:text-sm text-slate-500 font-sans">
+    <a href="../index.html" class="hover:text-brand-500 transition-colors">হোম</a>
+    <span class="mx-2">/</span>
+    <a href="../shop.html" class="hover:text-brand-500 transition-colors">শপ</a>
+    <span class="mx-2">/</span>
+    <a href="../category/sweets.html" class="hover:text-brand-500 transition-colors">Traditional Sweets</a>
+    <span class="mx-2">/</span>
+    <span class="text-slate-800 font-medium">Chapai Special Sandesh</span>
+  </div>
+</div>
+
+<!-- Product Details Section -->
+<section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="{ qty: 1, reviewsCount: 1, rating: 5 }" @review-submitted.window="reviewsCount = $event.detail.count; rating = $event.detail.rating">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white rounded-3xl border border-brand-100 p-6 sm:p-10 shadow-xs">
+    
+    <!-- Left Column: Product Image -->
+    <div class="flex items-center justify-center bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-4 min-h-[300px] sm:min-h-[400px]">
+      <img src="../images/product-sandesh.jpg" fetchpriority="high" width="400" height="400" alt="Chapai Special Sandesh" class="max-h-[350px] w-auto object-contain hover:scale-105 transition-transform duration-300">
+    </div>
+
+    <!-- Right Column: Details -->
+    <div class="flex flex-col justify-center space-y-6">
+      
+      <!-- Badges & Status -->
+      <div class="flex items-center gap-3">
+        <span class="px-2.5 py-1 text-[10px] font-bold bg-accent-orange text-white rounded-full uppercase tracking-wider">বেস্ট সেলার</span>
+        <span class="text-xs font-semibold text-emerald-500">
+          ● স্টকে আছে
+        </span>
+      </div>
+
+      <!-- Title & Price -->
+      <div class="space-y-2">
+        <h1 class="text-3xl sm:text-4xl font-bold font-serif text-brand-600 leading-tight">Chapai Special Sandesh</h1>
+        
+        <!-- Ratings -->
+        <div class="flex items-center gap-1.5 text-amber-400 text-sm">
+          <div class="flex items-center">
+            <template x-for="i in 5">
+              <svg class="w-4 h-4 fill-current" :class="i <= Math.round(rating) ? 'text-amber-400' : 'text-slate-200'" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            </template>
+          </div>
+          <span class="text-slate-400 text-xs font-medium ml-1" x-text="'(' + reviewsCount + 'টি ক্রেতা রিভিউ)'">(1টি ক্রেতা রিভিউ)</span>
+        </div>
+      </div>
+
+      <hr class="border-slate-100">
+
+      <!-- Pricing -->
+      <div class="flex items-baseline gap-4">
+        <span class="text-3xl font-extrabold text-brand-600 font-serif">650 টাকা</span>
+        <span class="text-lg text-slate-400 line-through font-serif">700 টাকা</span>
+        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">প্রতি kg</span>
+      </div>
+
+      <!-- Description -->
+      <div class="text-sm text-slate-600 leading-relaxed font-sans whitespace-pre-line">
+        খাঁটি ছানা ও চিনি দিয়ে তৈরি চাঁপাইনবাবগঞ্জের অত্যন্ত সুপরিচিত ক্ষীরসা সন্দেশ।
+      </div>
+
+      <hr class="border-slate-100">
+
+      <!-- Quantity Selector & Action Button -->
+      <div class="flex flex-col sm:flex-row gap-4 items-center" x-show="true">
+        <!-- Qty Editor -->
+        <div class="flex items-center border border-slate-200 rounded-lg p-1 bg-slate-50 self-stretch sm:self-auto justify-center">
+          <button @click="qty = Math.max(1, qty - 1)" class="w-10 h-10 flex items-center justify-center text-slate-500 font-semibold hover:bg-white rounded transition-colors">-</button>
+          <span class="w-12 text-center text-sm font-bold text-slate-800" x-text="qty">1</span>
+          <button @click="qty = qty + 1" class="w-10 h-10 flex items-center justify-center text-slate-500 font-semibold hover:bg-white rounded transition-colors">+</button>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button @click="$dispatch('add-to-cart-event', { id: 'special-sandesh', name: 'Chapai Special Sandesh', price: 650, unit: 'kg', image: 'images/product-sandesh.jpg', qty: qty })" 
+                class="flex-grow sm:flex-grow-0 sm:px-8 py-3.5 bg-brand-500 hover:bg-brand-600 text-white rounded-lg font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 self-stretch">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          কার্টে যোগ করুন
+        </button>
+      </div>
+
+      <!-- Out of stock indicator -->
+      <div x-show="!true" class="bg-rose-50 border border-rose-100 text-rose-600 p-4 rounded-xl text-center text-sm font-semibold" x-cloak>
+        ⚠️ দুঃখিত, এই পণ্যটি বর্তমানে স্টকে নেই। আমরা নতুন ব্যাচ প্রস্তুত করছি!
+      </div>
+
+      <!-- Extra Info -->
+      <div class="border-t border-slate-100 pt-4 space-y-2 text-xs text-slate-500 font-sans">
+        <div><span class="font-semibold">ক্যাটাগরি:</span> <a href="../category/sweets.html" class="text-brand-500 hover:underline">Traditional Sweets</a></div>
+        <div><span class="font-semibold">শিপিং:</span> দেশব্যাপী হোম ডেলিভারি বা লোকাল পিকআপ।</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Product Description Section -->
+<section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 font-sans">
+  <div class="bg-white rounded-3xl border border-brand-100 p-6 sm:p-10 shadow-xs space-y-6">
+    <h2 class="text-xl sm:text-2xl font-bold font-serif text-brand-600 flex items-center gap-2">
+      <span>📄</span> বিস্তারিত পণ্য বিবরণী
+    </h2>
+    <hr class="border-slate-100">
+    <div class="text-base text-slate-700 leading-relaxed whitespace-pre-line space-y-4">
+      Exquisite traditional milk sweet, cooked slowly with pure chhana (cottage cheese) and sugar, retaining the authentic granular texture and natural flavor.
+    </div>
+  </div>
+</section>
+
+<!-- Reviews & Ratings Section -->
+<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 font-sans" x-data="productReviews('special-sandesh', 1, 5)">
+  <h2 class="text-2xl font-bold font-serif text-brand-600 mb-8 flex items-center gap-2">
+    <span>⭐</span> ক্রেতা রিভিউ ও রেটিং
+  </h2>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Ratings Summary Card -->
+    <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-xs space-y-6 self-start">
+      <div class="text-center py-4 bg-brand-50/50 rounded-xl border border-brand-100/50">
+        <h3 class="text-5xl font-extrabold text-brand-600 font-serif" x-text="averageRating"></h3>
+        <div class="flex justify-center text-amber-400 my-2 text-lg">
+          <template x-for="i in 5">
+            <svg class="w-5 h-5 fill-current" :class="i <= Math.round(averageRating) ? 'text-amber-400' : 'text-slate-200'" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </template>
+        </div>
+        <p class="text-xs text-slate-500 font-medium font-sans" x-text="totalReviewsCount + 'টি ক্রেতা রেটিং এর উপর ভিত্তি করে'"></p>
+      </div>
+
+      <!-- Rating Progress Bars -->
+      <div class="space-y-3 font-sans text-xs">
+        <template x-for="star in [5, 4, 3, 2, 1]">
+          <div class="flex items-center gap-2">
+            <span class="w-3 font-semibold text-slate-600" x-text="star"></span>
+            <span class="text-amber-400">★</span>
+            <div class="flex-grow h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-500 rounded-full transition-all duration-500" 
+                   :style="'width: ' + (totalReviewsCount ? (starsCount[star] / totalReviewsCount * 100) : 0) + '%'"></div>
+            </div>
+            <span class="w-6 text-right text-slate-400 font-medium" x-text="starsCount[star]"></span>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- Review Form Card -->
+    <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-xs space-y-4">
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider font-serif">একটি রিভিউ লিখুন</h3>
+      
+      <div class="space-y-3 font-sans">
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1">আপনার রেটিং দিন <span class="text-rose-500">*</span></label>
+          <div class="flex gap-1 text-slate-200">
+            <template x-for="star in [1, 2, 3, 4, 5]">
+              <button @click="newRating = star" class="text-2xl transition-colors cursor-pointer" 
+                      :class="star <= newRating ? 'text-amber-400' : 'text-slate-200'" aria-label="Rate star">★</button>
+            </template>
+          </div>
+        </div>
+
+        <div>
+          <label for="review-name" class="block text-xs font-semibold text-slate-500 mb-1">আপনার নাম <span class="text-rose-500">*</span></label>
+          <input type="text" id="review-name" x-model="newName" placeholder="যেমন: মারুফ আহমেদ" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-brand-400 focus:border-brand-400">
+        </div>
+
+        <div>
+          <label for="review-text" class="block text-xs font-semibold text-slate-500 mb-1">আপনার রিভিউ <span class="text-rose-500">*</span></label>
+          <textarea id="review-text" x-model="newText" rows="3" placeholder="খাবারের স্বাদ, মান ও ডেলিভারি সম্পর্কে আপনার অভিজ্ঞতা লিখুন..." class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-brand-400 focus:border-brand-400"></textarea>
+        </div>
+
+        <button @click="submitReview()" class="w-full bg-brand-500 hover:bg-brand-600 text-white py-2.5 rounded-lg text-xs font-bold transition-all active:scale-98 shadow-sm">রিভিউ সাবমিট করুন</button>
+      </div>
+    </div>
+
+    <!-- Reviews List Card -->
+    <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-xs space-y-4 max-h-[500px] overflow-y-auto no-scrollbar">
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider font-serif">সাম্প্রতিক রিভিউসমূহ</h3>
+      
+      <div class="divide-y divide-slate-100 space-y-4">
+        <template x-if="reviews.length === 0">
+          <p class="text-xs text-slate-400 italic py-6 text-center">এখনো কোনো রিভিউ দেওয়া হয়নি। প্রথম রিভিউটি আপনিই দিন!</p>
+        </template>
+        
+        <template x-for="review in reviews">
+          <div class="pt-4 first:pt-0 space-y-2">
+            <div class="flex justify-between items-start font-sans">
+              <div>
+                <h4 class="text-xs font-bold text-slate-800" x-text="review.name"></h4>
+                <div class="flex text-amber-400 text-xs mt-0.5">
+                  <template x-for="i in 5">
+                    <span x-text="i <= review.rating ? '★' : '☆'"></span>
+                  </template>
+                </div>
+              </div>
+              <span class="text-[10px] text-slate-400" x-text="review.date"></span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans" x-text="review.text"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Related Products -->
+<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100">
+  <h2 class="text-2xl font-bold font-serif text-brand-600 mb-8">সম্পর্কিত পণ্যসমূহ</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    
+  <div class="product-card-item bg-white rounded-2xl border border-brand-100 p-4 hover-glow flex flex-col justify-between group relative transition-custom"
+       data-category="sweets"
+       data-price="350"
+       data-rating="5"
+       data-name="Chapai Nakshi Pitha"
+       data-in-stock="true"
+       data-index="0">
+       
+    <!-- Badges -->
+    <div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+      
+    <span class="px-2.5 py-1 text-[10px] font-bold bg-brand-500 text-white rounded-full uppercase tracking-wider">নতুন</span>
+    
+  
+    </div>
+    
+    <!-- Image -->
+    <a href="../product/nakshi-pitha.html" class="h-48 w-full bg-slate-50 rounded-xl overflow-hidden flex items-center justify-center p-3 mb-4">
+      <img src="../images/product-pitha.jpg" alt="Chapai Nakshi Pitha" loading="lazy" width="240" height="240" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+    </a>
+
+    <!-- Details -->
+    <div class="space-y-2 flex-grow flex flex-col justify-between">
+      <div>
+        <div class="flex items-center gap-1 text-amber-400 text-xs">
+          ★★★★★
+          <span class="text-slate-400 font-medium ml-1">(1)</span>
+        </div>
+        <a href="../product/nakshi-pitha.html" class="block mt-1">
+          <h3 class="text-base font-bold text-slate-800 hover:text-brand-500 transition-colors leading-snug font-sans">Chapai Nakshi Pitha</h3>
+        </a>
+      </div>
+
+      <!-- Pricing & Actions -->
+      <div class="flex items-center justify-between pt-3 border-t border-slate-50">
+        <div class="flex flex-col">
+          <span class="text-[10px] text-slate-400 font-medium font-sans">প্রতি pcs</span>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-base font-bold text-brand-600 font-serif">350 টাকা</span>
+            <span class="text-xs text-slate-400 line-through font-serif">400 টাকা</span>
+          </div>
+        </div>
+
+        
+        <button onclick="window.dispatchEvent(new CustomEvent('add-to-cart-event', { detail: { id: 'nakshi-pitha', name: 'Chapai Nakshi Pitha', price: 350, unit: 'pcs', image: 'images/product-pitha.jpg', qty: 1 } }))"
+                class="w-9 h-9 rounded-full bg-brand-50 hover:bg-brand-500 text-brand-600 hover:text-white flex items-center justify-center transition-all shadow-xs border border-brand-100 hover:border-brand-500 cursor-pointer" 
+                aria-label="Add to cart">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+  
+  </div>
+</section>
+
+<script>
+  function productReviews(productId, compiledCount, compiledRating) {
+    return {
+      productId: productId,
+      reviews: [],
+      newRating: 5,
+      newName: '',
+      newText: '',
+      totalReviewsCount: compiledCount || 0,
+      averageRating: compiledRating || 0,
+      starsCount: {5:0, 4:0, 3:0, 2:0, 1:0},
+      
+      init() {
+        // Load dynamically compiled reviews from the database
+        const dbReviews = [{"id":"rev-7","productId":"special-sandesh","name":"Imran Hashmi","rating":5,"date":"মে ১৪, ২০২৬","text":"ক্ষীরসা সন্দেশটা মুখে দিলেই মিলিয়ে যায়। খাঁটি ছানার মিষ্টি স্বাদ খুব চমৎকার।"}] || [];
+        
+        // Load reviews submitted locally by this user in this browser
+        const localKey = 'chapai_reviews_local_' + this.productId;
+        const localSaved = localStorage.getItem(localKey);
+        const localReviews = localSaved ? JSON.parse(localSaved) : [];
+        
+        // Merge lists (local ones first for instant visitor feedback, then official database-managed ones)
+        // Deduplicate in case a review gets added to DB but exists locally
+        const filteredDb = dbReviews.filter(dbr => 
+          !localReviews.some(lr => lr.name === dbr.name && lr.text === dbr.text)
+        );
+        
+        this.reviews = [...localReviews, ...filteredDb];
+        
+        // Calculate dynamic count and rating purely based on this.reviews
+        this.totalReviewsCount = this.reviews.length;
+        if (this.totalReviewsCount > 0) {
+          const totalRating = this.reviews.reduce((sum, r) => sum + Number(r.rating), 0);
+          this.averageRating = Number((totalRating / this.totalReviewsCount).toFixed(1));
+        } else {
+          this.averageRating = 5.0;
+        }
+
+        this.generateStarsDistribution();
+        
+        // Sync with the top section
+        this.$nextTick(() => {
+          window.dispatchEvent(new CustomEvent('review-submitted', { 
+            detail: { count: this.totalReviewsCount, rating: this.averageRating } 
+          }));
+        });
+      },
+      
+      generateStarsDistribution() {
+        let dist = {5: 0, 4: 0, 3: 0, 2: 0, 1: 0};
+        this.reviews.forEach(r => {
+          const rVal = Math.round(Number(r.rating));
+          if (dist[rVal] !== undefined) {
+            dist[rVal]++;
+          }
+        });
+        this.starsCount = dist;
+      },
+      
+      submitReview() {
+        if (!this.newName.trim()) {
+          alert('অনুগ্রহ করে আপনার নাম লিখুন।');
+          return;
+        }
+        if (!this.newText.trim()) {
+          alert('অনুগ্রহ করে আপনার মূল্যবান মতামত (রিভিউ) লিখুন।');
+          return;
+        }
+        
+        const newReview = {
+          name: this.newName.trim(),
+          rating: parseInt(this.newRating),
+          date: new Date().toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' }),
+          text: this.newText.trim()
+        };
+        
+        // Add to local browser storage so the customer sees it instantly
+        const localKey = 'chapai_reviews_local_' + this.productId;
+        const localSaved = localStorage.getItem(localKey);
+        const localReviews = localSaved ? JSON.parse(localSaved) : [];
+        localReviews.unshift(newReview);
+        localStorage.setItem(localKey, JSON.stringify(localReviews));
+        
+        this.reviews.unshift(newReview);
+        
+        // Calculate new count and average rating purely from this.reviews
+        this.totalReviewsCount = this.reviews.length;
+        const totalRating = this.reviews.reduce((sum, r) => sum + Number(r.rating), 0);
+        this.averageRating = Number((totalRating / this.totalReviewsCount).toFixed(1));
+        
+        // Re-generate stars distribution
+        this.generateStarsDistribution();
+        
+        // Dispatch the custom event to sync with the top section
+        window.dispatchEvent(new CustomEvent('review-submitted', { 
+          detail: { count: this.totalReviewsCount, rating: this.averageRating } 
+        }));
+
+        // Submit to local server to persist and compile if served from the CMS server
+        fetch('http://localhost:8085/api/reviews/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            productId: this.productId,
+            name: newReview.name,
+            rating: newReview.rating,
+            date: newReview.date,
+            text: newReview.text
+          })
+        }).then(res => {
+          if (res.ok) {
+            console.log('Review persisted in site database successfully!');
+          }
+        }).catch(err => {
+          console.warn('CMS server not active for persistence:', err);
+        });
+        
+        // Reset form
+        this.newName = '';
+        this.newText = '';
+        this.newRating = 5;
+        
+        alert('আপনার রিভিউটি সফলভাবে সাবমিট করা হয়েছে। ধন্যবাদ!');
+      }
+    };
+  }
+</script>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-brand-950 text-brand-100/90 pt-16 pb-8 border-t border-brand-900 font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        
+        <!-- Brand Info -->
+        <div class="space-y-4">
+          <span class="text-2xl font-bold font-serif text-white tracking-tight">
+            🌾 Chapai Fresh
+          </span>
+          <p class="text-sm text-brand-200/70 leading-relaxed font-sans">
+            Chapai Fresh brings you the finest, 100% organic and pure delicacies directly from the fertile lands of Chapai Nawabganj. We are committed to authenticity and quality.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://facebook.com" target="_blank" class="w-8 h-8 rounded-full bg-brand-900 hover:bg-brand-700 text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-brand-900 hover:bg-brand-700 text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-4 font-sans">
+          <h4 class="text-white text-base font-semibold tracking-wide font-sans">কুইক লিংক</h4>
+          <ul class="space-y-2 text-sm text-brand-200/80">
+            <li><a href="../index.html" class="hover:text-white transition-colors">হোম</a></li>
+            <li><a href="../shop.html" class="hover:text-white transition-colors">শপ ক্যাটালগ</a></li>
+            <li><a href="../about.html" class="hover:text-white transition-colors">আমাদের সম্পর্কে</a></li>
+            <li><a href="../contact.html" class="hover:text-white transition-colors">যোগাযোগের বিবরণ</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="space-y-4 font-sans">
+          <h4 class="text-white text-base font-semibold tracking-wide font-sans">ক্যাটাগরি</h4>
+          <ul class="space-y-2 text-sm text-brand-200/80">
+            <li><a href="../category/fruits.html" class="hover:text-white transition-colors">Fresh Fruits</a></li>
+<li><a href="../category/sweets.html" class="hover:text-white transition-colors">Traditional Sweets</a></li>
+<li><a href="../category/pickles.html" class="hover:text-white transition-colors">Organic Pickles</a></li>
+<li><a href="../category/dryfoods.html" class="hover:text-white transition-colors">Dry Foods</a></li>
+
+          </ul>
+        </div>
+
+        <!-- Newsletter / Contact -->
+        <div class="space-y-4 font-sans">
+          <h4 class="text-white text-base font-semibold tracking-wide font-sans">যোগাযোগের তথ্য</h4>
+          <p class="text-sm text-brand-200/70 leading-relaxed font-sans">
+            📍 Boro Indara Mor, Chapai Nawabganj Sadar, Bangladesh<br>
+            📞 +880 1308995319<br>
+            ✉️ info@chapaifresh.com
+          </p>
+          <div class="pt-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-500/25 border border-brand-500 text-brand-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              হোয়াটসঅ্যাপে অর্ডার নেওয়া হচ্ছে
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="border-brand-900 my-8">
+
+      <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-brand-300/60 font-sans gap-4">
+        <p>© ২০২৬ Chapai Fresh। চাঁপাইনবাবগঞ্জ থেকে অত্যন্ত যত্ন সহকারে সংগৃহীত। সর্বস্বত্ব সংরক্ষিত।</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Shopping Cart Drawer -->
+  <div x-show="openCart" class="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" x-cloak>
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Backdrop overlay -->
+      <div x-show="openCart" 
+           x-transition:enter="ease-in-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+           x-transition:leave="ease-in-out duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" 
+           @click="openCart = false" 
+           class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" aria-hidden="true"></div>
+
+      <!-- Drawer panel -->
+      <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <div x-show="openCart" 
+             x-transition:enter="transform transition ease-in-out duration-300 sm:duration-500" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
+             x-transition:leave="transform transition ease-in-out duration-300 sm:duration-500" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+             class="pointer-events-auto w-screen max-w-md">
+          <div class="flex h-full flex-col bg-white shadow-2xl border-l border-brand-100">
+            
+            <!-- Cart Header -->
+            <div class="flex items-start justify-between px-6 py-6 bg-brand-50 border-b border-brand-100">
+              <h2 class="text-lg font-bold font-serif text-brand-600 flex items-center gap-2" id="slide-over-title">
+                🛒 শপিং কার্ট
+              </h2>
+              <button @click="openCart = false" class="text-slate-400 hover:text-brand-500 p-1 rounded-full hover:bg-brand-100 transition-colors">
+                <span class="sr-only">প্যানেল বন্ধ করুন</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Cart Items Section -->
+            <div class="flex-1 overflow-y-auto px-6 py-6 no-scrollbar space-y-6">
+              
+              <!-- Empty Cart State -->
+              <div x-show="cartItems.length === 0" class="flex flex-col items-center justify-center h-64 text-center">
+                <div class="text-5xl mb-4">🛒</div>
+                <h3 class="text-base font-semibold text-slate-700 font-sans">আপনার কার্টটি খালি</h3>
+                <p class="text-xs text-slate-400 mt-1 max-w-[240px] font-sans">আপনার কার্টে সুস্বাদু খাবার যোগ করতে আমাদের সেরা কালেকশনগুলো ঘুরে দেখুন।</p>
+                <button @click="openCart = false" class="mt-4 px-4 py-2 bg-brand-500 text-white rounded-lg text-xs font-semibold hover:bg-brand-600 shadow-sm hover:shadow transition-all">কেনাকাটা শুরু করুন</button>
+              </div>
+
+              <!-- Cart List -->
+              <div x-show="cartItems.length > 0" class="divide-y divide-slate-100">
+                <template x-for="item in cartItems" :key="item.id">
+                  <div class="flex py-4 gap-4">
+                    <img :src="'../' + item.image" :alt="item.name" class="h-16 w-16 flex-none rounded-lg object-cover bg-slate-50 border border-slate-100">
+                    <div class="flex-auto">
+                      <h4 class="text-sm font-semibold text-slate-800 font-sans leading-snug" x-text="item.name"></h4>
+                      <p class="text-xs text-slate-400 mt-0.5" x-text="item.price + ' টাকা / ' + item.unit"></p>
+                      
+                      <!-- Quantity control -->
+                      <div class="flex items-center gap-2 mt-2">
+                        <button @click="updateQty(item.id, -1)" class="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs font-semibold text-slate-500 hover:bg-slate-50">-</button>
+                        <span class="text-xs font-medium text-slate-800 w-6 text-center" x-text="item.qty"></span>
+                        <button @click="updateQty(item.id, 1)" class="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs font-semibold text-slate-500 hover:bg-slate-50">+</button>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-end justify-between">
+                      <p class="text-sm font-bold text-slate-800 font-sans" x-text="(item.price * item.qty) + ' টাকা'"></p>
+                      <button @click="removeItem(item.id)" class="text-xs text-rose-500 hover:underline">বাদ দিন</button>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Coupon Input -->
+              <div x-show="cartItems.length > 0" class="border-t border-brand-100 pt-4 mt-6 space-y-2">
+                <h3 class="text-xs font-bold text-brand-600 font-serif pb-1 uppercase tracking-wider">কুপন কোড ব্যবহার করুন</h3>
+                <div class="flex gap-2">
+                  <input type="text" x-model="couponInput" placeholder="যেমন: WELCOME10" class="flex-grow text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-brand-400">
+                  <button @click="applyCoupon()" class="px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-lg text-xs font-bold transition-all active:scale-95">প্রয়োগ</button>
+                </div>
+                <div x-show="couponError" class="text-[10px] text-rose-500 font-semibold" x-text="couponError" x-cloak></div>
+                <div x-show="appliedCoupon" class="text-[10px] text-emerald-600 font-semibold flex items-center justify-between" x-cloak>
+                  <span x-text="'✓ \'' + appliedCoupon.code + '\' কুপন সক্রিয় আছে'"></span>
+                  <button @click="appliedCoupon = null; couponInput = ''; calculateTotals();" class="text-[10px] text-rose-500 hover:underline">মুছুন</button>
+                </div>
+              </div>
+
+              <!-- Delivery Checkout Form -->
+              <div x-show="cartItems.length > 0" class="border-t border-brand-100 pt-6 mt-8 space-y-4">
+                <h3 class="text-sm font-bold text-brand-600 font-serif border-b border-brand-50 pb-2">ডেলিভারির তথ্য</h3>
+                
+                <div class="space-y-1">
+                  <label for="checkout-name" class="block text-xs font-semibold text-slate-500">আপনার পুরো নাম <span class="text-rose-500">*</span></label>
+                  <input type="text" id="checkout-name" x-model="customerName" placeholder="যেমন: আবুল হাসান" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+                </div>
+
+                <div class="space-y-1">
+                  <label for="checkout-phone" class="block text-xs font-semibold text-slate-500">ফোন নম্বর <span class="text-rose-500">*</span></label>
+                  <input type="tel" id="checkout-phone" x-model="customerPhone" placeholder="যেমন: 01712345678" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+                </div>
+
+                <div class="space-y-1">
+                  <label for="checkout-area" class="block text-xs font-semibold text-slate-500">ডেলিভারি এলাকা <span class="text-rose-500">*</span></label>
+                  <select id="checkout-area" x-model="deliveryArea" @change="updateDeliveryFee()" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none">
+                    <option value="inside">চাঁপাইনবাবগঞ্জের ভিতরে (৬০ টাকা)</option>
+                    <option value="outside">চাঁপাইনবাবগঞ্জের বাইরে (১৩০ টাকা)</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1">
+                  <label for="checkout-address" class="block text-xs font-semibold text-slate-500">ডেলিভারির ঠিকানা <span class="text-rose-500">*</span></label>
+                  <textarea id="checkout-address" x-model="customerAddress" rows="2" placeholder="বাড়ি/গ্রাম, রাস্তা, থানা, জেলা" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-brand-400 focus:border-brand-400 outline-none"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Cart Footer (Totals and Checkout button) -->
+            <div x-show="cartItems.length > 0" class="border-t border-brand-100 bg-brand-50 px-6 py-6 space-y-4">
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-500">
+                  <span>উপমোট</span>
+                  <span class="font-bold text-slate-800" x-text="subtotal + ' টাকা'"></span>
+                </div>
+                <div class="flex justify-between text-xs text-slate-500">
+                  <span>ডেলিভারি চার্জ</span>
+                  <span class="font-bold text-slate-800" x-text="deliveryFee + ' টাকা'"></span>
+                </div>
+                <div x-show="couponDiscount > 0" class="flex justify-between text-xs text-emerald-600 font-semibold" x-cloak>
+                  <span>কুপন ডিসকাউন্ট</span>
+                  <span x-text="'- ' + couponDiscount + ' টাকা'"></span>
+                </div>
+                <hr class="border-brand-200/50">
+                <div class="flex justify-between text-sm font-bold text-brand-600 font-serif">
+                  <span>সর্বমোট</span>
+                  <span class="text-base" x-text="total + ' টাকা'"></span>
+                </div>
+              </div>
+
+              <button @click="placeOrder()" class="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-3 rounded-lg text-sm font-bold shadow-md hover:bg-emerald-700 active:scale-98 transition-all">
+                <!-- WhatsApp SVG icon -->
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.59 1.988 14.113.96 11.487.96c-5.438 0-9.863 4.372-9.867 9.802-.001 1.77.487 3.5 1.411 5.006l-1.002 3.66 3.753-.984zm13.195-7.854c-.29-.145-1.72-.848-1.987-.945-.266-.096-.46-.145-.654.145-.193.291-.748.945-.917 1.139-.17.194-.339.218-.629.073-.29-.145-1.228-.452-2.34-1.444-.865-.771-1.449-1.723-1.619-2.014-.17-.29-.018-.448.127-.592.13-.13.29-.339.435-.509.145-.17.193-.29.29-.485.097-.194.048-.364-.024-.509-.072-.145-.654-1.577-.896-2.158-.236-.569-.475-.492-.654-.501-.17-.008-.364-.01-.557-.01-.193 0-.509.073-.775.364-.266.29-1.017.994-1.017 2.425 0 1.431 1.041 2.814 1.186 3.008.145.194 2.049 3.128 4.964 4.385.694.3 1.236.479 1.659.613.698.222 1.334.191 1.837.116.56-.083 1.72-.703 1.962-1.382.242-.679.242-1.261.17-1.382-.072-.12-.266-.194-.557-.339z"/></svg>
+                হোয়াটসঅ্যাপে অর্ডার করুন
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Success Invoice Modal -->
+  <div x-show="showInvoiceModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs print:p-0 print:bg-transparent" x-cloak>
+    <div @click.away="showInvoiceModal = false" class="bg-white rounded-2xl shadow-2xl border border-brand-100 max-w-xl w-full max-h-[90vh] overflow-y-auto print:max-h-full print:border-none print:shadow-none print:rounded-none flex flex-col justify-between" id="printable-invoice">
+      
+      <!-- Invoice Header -->
+      <div class="p-6 border-b border-brand-50 bg-brand-50/50 flex justify-between items-center print:border-b-2 print:border-slate-200">
+        <div>
+          <span class="text-xl font-bold font-serif text-brand-600">🌾 Chapai Fresh</span>
+          <p class="text-xs text-slate-400 font-sans mt-0.5">খাঁটি ও সুস্বাদু খাবারের ঠিকানা</p>
+        </div>
+        <div class="text-right">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 uppercase tracking-wide print:hidden">অর্ডার সফল</span>
+          <h2 class="text-sm font-bold text-slate-700 font-serif mt-1" x-text="'রশিদ নং: ' + lastOrderDetails.orderId"></h2>
+        </div>
+      </div>
+
+      <!-- Invoice Body -->
+      <div class="p-6 space-y-6 flex-grow">
+        
+        <!-- Customer & Order Metadata -->
+        <div class="grid grid-cols-2 gap-4 text-xs font-sans">
+          <div class="space-y-1">
+            <h4 class="font-bold text-slate-400 uppercase tracking-wider">ক্রেতার বিবরণ</h4>
+            <p class="font-semibold text-slate-800" x-text="lastOrderDetails.customerName"></p>
+            <p class="text-slate-500" x-text="'মোবাইল: ' + lastOrderDetails.customerPhone"></p>
+            <p class="text-slate-500" x-text="'ঠিকানা: ' + lastOrderDetails.customerAddress"></p>
+          </div>
+          <div class="space-y-1 text-right">
+            <h4 class="font-bold text-slate-400 uppercase tracking-wider">অর্ডারের বিবরণ</h4>
+            <p class="text-slate-500" x-text="'তারিখ: ' + lastOrderDetails.date"></p>
+            <p class="text-slate-500" x-text="'ডেলিভারি এলাকা: ' + (lastOrderDetails.deliveryArea === 'inside' ? 'চাঁপাইনবাবগঞ্জের ভিতরে' : 'চাঁপাইনবাবগঞ্জের বাইরে')"></p>
+            <p class="text-slate-500">পেমেন্ট পদ্ধতি: Cash on Delivery</p>
+          </div>
+        </div>
+
+        <!-- Items Table -->
+        <div class="border border-slate-100 rounded-xl overflow-hidden print:border-slate-200">
+          <table class="w-full text-left border-collapse text-xs font-sans">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-100 print:bg-slate-100 print:border-slate-200">
+                <th class="p-3 font-bold text-slate-600">পণ্য</th>
+                <th class="p-3 font-bold text-slate-600 text-center">পরিমাণ</th>
+                <th class="p-3 font-bold text-slate-600 text-right">মূল্য</th>
+                <th class="p-3 font-bold text-slate-600 text-right">মোট</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="item in lastOrderDetails.items">
+                <tr class="border-b border-slate-50 hover:bg-slate-50/50 print:border-slate-100">
+                  <td class="p-3 font-medium text-slate-800" x-text="item.name"></td>
+                  <td class="p-3 text-slate-500 text-center" x-text="item.qty + ' ' + item.unit"></td>
+                  <td class="p-3 text-slate-500 text-right" x-text="item.price + ' টাকা'"></td>
+                  <td class="p-3 font-semibold text-slate-850 text-right" x-text="(item.price * item.qty) + ' টাকা'"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Totals Breakdown -->
+        <div class="w-full sm:w-1/2 ml-auto space-y-1.5 text-xs font-sans print:w-2/3">
+          <div class="flex justify-between text-slate-500">
+            <span>উপমোট:</span>
+            <span class="font-medium text-slate-800" x-text="lastOrderDetails.subtotal + ' টাকা'"></span>
+          </div>
+          <div class="flex justify-between text-slate-500">
+            <span>ডেলিভারি চার্জ:</span>
+            <span class="font-medium text-slate-800" x-text="lastOrderDetails.deliveryFee + ' টাকা'"></span>
+          </div>
+          <template x-if="lastOrderDetails.couponDiscount > 0">
+            <div class="flex justify-between text-emerald-600 font-medium">
+              <span x-text="'কুপন ডিসকাউন্ট (' + lastOrderDetails.appliedCoupon + '):'"></span>
+              <span x-text="'- ' + lastOrderDetails.couponDiscount + ' টাকা'"></span>
+            </div>
+          </template>
+          <hr class="border-slate-100 print:border-slate-200">
+          <div class="flex justify-between text-sm font-bold text-brand-600 font-serif">
+            <span>সর্বমোট বিল:</span>
+            <span class="text-base text-brand-700" x-text="lastOrderDetails.total + ' টাকা'"></span>
+          </div>
+        </div>
+
+        <!-- Thank you message -->
+        <div class="text-center pt-4 border-t border-slate-50 print:border-slate-200 font-sans">
+          <p class="text-xs text-brand-600 font-semibold">চাঁপাই ফ্রেশ থেকে অর্ডার করার জন্য আপনাকে ধন্যবাদ!</p>
+          <p class="text-[10px] text-slate-400 mt-1">যেকোনো সহায়তার জন্য যোগাযোগ করুন: +880 1308995319</p>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="p-6 bg-slate-50 border-t border-brand-50 flex gap-3 print:hidden">
+        <button @click="window.print()" class="flex-1 flex items-center justify-center gap-2 bg-brand-500 text-white py-2.5 rounded-xl text-xs font-bold shadow-md hover:bg-brand-600 transition-all cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0a2.25 2.25 0 01-2.25 2.25H8.59A2.25 2.25 0 016.34 18m11.318-4.171c.24.03.48.062.72.096M12 18.75V15m-4.5-.75H12m0 0h4.5M3 10.5h18" />
+          </svg>
+          মুদ্রণ করুন / PDF ডাউনলোড
+        </button>
+        <button @click="showInvoiceModal = false" class="px-5 py-2.5 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded-xl text-xs font-bold transition-all cursor-pointer">
+          বন্ধ করুন
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Alpine.js Cart Store and controller
+    function cartSystem() {
+      return {
+        openCart: false,
+        mobileMenuOpen: false,
+        cartItems: [],
+        cartCount: 0,
+        subtotal: 0,
+        deliveryFee: 60,
+        total: 0,
+        customerName: '',
+        customerPhone: '',
+        customerAddress: '',
+        deliveryArea: 'inside',
+        insideFee: 60,
+        outsideFee: 130,
+        whatsappNumber: '01308995319',
+        
+        // Coupon system states
+        coupons: [{"code":"WELCOME10","type":"percent","value":10,"minOrder":0},{"code":"FREE60","type":"flat_delivery","value":60,"minOrder":500}],
+        couponInput: '',
+        appliedCoupon: null,
+        couponDiscount: 0,
+        couponError: '',
+
+        // Invoice modal states
+        showInvoiceModal: false,
+        lastOrderDetails: {},
+
+        init() {
+          // Load fees from settings data embedded via generator if any
+          this.insideFee = parseInt('60') || 60;
+          this.outsideFee = parseInt('130') || 130;
+          this.deliveryFee = this.deliveryArea === 'inside' ? this.insideFee : this.outsideFee;
+          
+          this.loadCart();
+          
+          // Listen to "add-to-cart" custom events
+          window.addEventListener('add-to-cart-event', (e) => {
+            this.addItem(e.detail);
+            this.openCart = true;
+          });
+        },
+
+        loadCart() {
+          const raw = localStorage.getItem('chapai_cart');
+          this.cartItems = raw ? JSON.parse(raw) : [];
+          this.calculateTotals();
+        },
+
+        saveCart() {
+          localStorage.setItem('chapai_cart', JSON.stringify(this.cartItems));
+          this.calculateTotals();
+        },
+
+        addItem(product) {
+          const existing = this.cartItems.find(item => item.id === product.id);
+          if (existing) {
+            existing.qty += product.qty || 1;
+          } else {
+            this.cartItems.push({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              unit: product.unit || 'kg',
+              image: product.image,
+              qty: product.qty || 1
+            });
+          }
+          this.saveCart();
+          this.showToast(`কার্টে ${product.name} যোগ করা হয়েছে!`);
+        },
+
+        updateQty(id, delta) {
+          const item = this.cartItems.find(item => item.id === id);
+          if (item) {
+            item.qty += delta;
+            if (item.qty <= 0) {
+              this.removeItem(id);
+            } else {
+              this.saveCart();
+            }
+          }
+        },
+
+        removeItem(id) {
+          this.cartItems = this.cartItems.filter(item => item.id !== id);
+          this.saveCart();
+        },
+
+        updateDeliveryFee() {
+          this.deliveryFee = this.deliveryArea === 'inside' ? this.insideFee : this.outsideFee;
+          this.calculateTotals();
+        },
+
+        applyCoupon() {
+          this.couponError = '';
+          const code = this.couponInput.trim().toUpperCase();
+          if (!code) return;
+          
+          const found = this.coupons.find(c => c.code === code);
+          if (!found) {
+            this.couponError = 'ভুল কুপন কোড!';
+            this.appliedCoupon = null;
+            this.calculateTotals();
+            return;
+          }
+          
+          if (this.subtotal < found.minOrder) {
+            this.couponError = `কুপনটি ব্যবহার করতে ন্যূনতম ${found.minOrder} টাকার অর্ডার করুন!`;
+            this.appliedCoupon = null;
+            this.calculateTotals();
+            return;
+          }
+          
+          this.appliedCoupon = found;
+          this.calculateTotals();
+          this.showToast('✅ কুপন সফলভাবে প্রয়োগ করা হয়েছে!');
+        },
+
+        calculateTotals() {
+          this.cartCount = this.cartItems.reduce((sum, item) => sum + item.qty, 0);
+          this.subtotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+          
+          if (this.appliedCoupon && this.subtotal < this.appliedCoupon.minOrder) {
+            this.appliedCoupon = null;
+            this.couponError = 'পণ্য সরানোর কারণে কুপনের ন্যূনতম মূল্যের শর্ত পূরণ হয়নি।';
+          }
+          
+          this.couponDiscount = 0;
+          if (this.appliedCoupon) {
+            if (this.appliedCoupon.type === 'percent') {
+              this.couponDiscount = Math.round(this.subtotal * (this.appliedCoupon.value / 100));
+            } else if (this.appliedCoupon.type === 'flat_delivery') {
+              this.couponDiscount = Math.min(this.deliveryFee, this.appliedCoupon.value);
+            }
+          }
+          
+          this.total = this.subtotal + this.deliveryFee - this.couponDiscount;
+        },
+
+        placeOrder() {
+          if (!this.customerName.trim()) {
+            alert('অনুগ্রহ করে আপনার পুরো নাম লিখুন।');
+            return;
+          }
+          if (!this.customerPhone.trim() || this.customerPhone.trim().length < 10) {
+            alert('অনুগ্রহ করে একটি সঠিক ফোন নম্বর লিখুন।');
+            return;
+          }
+          if (!this.customerAddress.trim()) {
+            alert('অনুগ্রহ করে আপনার ডেলিভারির ঠিকানা লিখুন।');
+            return;
+          }
+
+          // Build order text message from buyer's perspective
+          let orderText = `আসসালামু আলাইকুম, আমি *${this.customerName.trim()}*। আমি আপনাদের ওয়েবসাইট থেকে এই পণ্যগুলো অর্ডার করতে চাই।\n\n`;
+          orderText += `*👤 আমার বিবরণ:*\n`;
+          orderText += `*নাম:* ${this.customerName.trim()}\n`;
+          orderText += `*মোবাইল নম্বর:* ${this.customerPhone.trim()}\n`;
+          orderText += `*ডেলিভারির ঠিকানা:* ${this.customerAddress.trim()}\n`;
+          orderText += `*ডেলিভারি এলাকা:* ${this.deliveryArea === 'inside' ? 'চাঁপাইনবাবগঞ্জের ভিতরে' : 'চাঁপাইনবাবগঞ্জের বাইরে'}\n\n`;
+          
+          orderText += `*📦 অর্ডারকৃত পণ্যের তালিকা:*\n`;
+          this.cartItems.forEach((item, idx) => {
+            orderText += `${idx + 1}. ${item.name} - ${item.qty} ${item.unit} (${item.price} টাকা করে) = *${item.price * item.qty} টাকা*\n`;
+          });
+          
+          orderText += `\n----------------------------\n`;
+          orderText += `*পণ্যের মোট মূল্য:* ${this.subtotal} টাকা\n`;
+          orderText += `*ডেলিভারি চার্জ:* ${this.deliveryFee} টাকা\n`;
+          if (this.couponDiscount > 0) {
+            orderText += `*কুপন ডিসকাউন্ট (${this.appliedCoupon.code}):* -${this.couponDiscount} টাকা\n`;
+          }
+          orderText += `*সর্বমোট প্রদেয় বিল:* *${this.total} টাকা*\n\n`;
+          orderText += `দয়া করে আমার অর্ডারটি কনফার্ম করুন। ধন্যবাদ!`;
+
+          const encodedText = encodeURIComponent(orderText);
+          let cleanPhone = this.whatsappNumber.replace(/\D/g, '');
+          if (cleanPhone.startsWith('0') && cleanPhone.length === 11) {
+            cleanPhone = '88' + cleanPhone;
+          }
+          const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodedText}`;
+          
+          // Populate order details for modal invoice BEFORE clearing
+          this.lastOrderDetails = {
+            orderId: 'CF-' + Math.floor(100000 + Math.random() * 900000),
+            date: new Date().toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' }),
+            customerName: this.customerName.trim(),
+            customerPhone: this.customerPhone.trim(),
+            customerAddress: this.customerAddress.trim(),
+            deliveryArea: this.deliveryArea,
+            items: JSON.parse(JSON.stringify(this.cartItems)),
+            subtotal: this.subtotal,
+            deliveryFee: this.deliveryFee,
+            couponDiscount: this.couponDiscount,
+            appliedCoupon: this.appliedCoupon ? this.appliedCoupon.code : null,
+            total: this.total
+          };
+          this.showInvoiceModal = true;
+
+          // Clear cart on success
+          localStorage.removeItem('chapai_cart');
+          this.cartItems = [];
+          this.cartCount = 0;
+          this.openCart = false;
+          
+          // Reset form fields
+          this.customerName = '';
+          this.customerPhone = '';
+          this.customerAddress = '';
+          this.couponInput = '';
+          this.appliedCoupon = null;
+          this.couponDiscount = 0;
+          
+          // Redirect
+          window.open(url, '_blank');
+        },
+
+        showToast(message) {
+          // Dynamic toast alert
+          const toast = document.createElement('div');
+          toast.className = 'fixed bottom-4 left-4 bg-brand-600 text-white px-4 py-3 rounded-lg shadow-xl text-sm font-semibold z-50 transition-all duration-300 opacity-0 translate-y-2 flex items-center gap-2 border border-brand-500';
+          toast.innerHTML = `<span>✅</span> <span>${message}</span>`;
+          document.body.appendChild(toast);
+          
+          setTimeout(() => {
+            toast.classList.remove('opacity-0', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+          }, 50);
+
+          setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'translate-y-2');
+            setTimeout(() => {
+              document.body.removeChild(toast);
+            }, 300);
+          }, 3000);
+        }
+      };
+    }
+  </script>
+</body>
+</html>
