@@ -53,7 +53,7 @@
           x-show="zoom" 
           class="absolute inset-0 bg-no-repeat transition-opacity duration-150 pointer-events-none"
           :style="{
-            backgroundImage: `url('{{PATH_PREFIX}}' + images[activeImageIdx])`,
+            backgroundImage: `url('{{PATH_PREFIX}}${images[activeImageIdx]}')`,
             backgroundPosition: bgPos,
             backgroundSize: '200%'
           }"

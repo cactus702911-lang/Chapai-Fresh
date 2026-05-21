@@ -6,6 +6,7 @@
   <title>Traditional Sweets | Chapai Fresh</title>
   <meta name="description" content="Pure milk sweets made by master craftsmen">
   <link href="../output.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../images/logo/favicon.png">
   <!-- Alpine.js for interactive dropdowns, cart, mobile nav -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   
@@ -42,17 +43,18 @@
       <div class="flex items-center justify-between h-20">
         
         <!-- Logo -->
-        <a href="../index" class="flex items-center gap-2 group">
+        <a href="../" class="flex items-center gap-2 group">
+          <img src="../images/logo/logo.png" alt="Chapai Fresh" class="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300">
           <span class="text-2xl font-bold font-serif tracking-tight text-brand-500 group-hover:text-brand-600 transition-colors">
-            🌾 Chapai Fresh
+            Chapai Fresh
           </span>
         </a>
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-8">
-          <a href="../index" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">হোম</a>
+          <a href="../" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">হোম</a>
           <a href="../shop" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">শপ</a>
-          <a href="../index#categories" class="text-sm font-medium hover:text-brand-500 transition-colors py-2">ক্যাটাগরি</a>
+          <a href="../#categories" class="text-sm font-medium hover:text-brand-500 transition-colors py-2">ক্যাটাগরি</a>
           <a href="../about" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">আমাদের সম্পর্কে</a>
           <a href="../blog" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">ব্লগ</a>
           <a href="../contact" class="text-sm font-medium hover:text-brand-500 transition-colors py-2 text-slate-600">যোগাযোগ</a>
@@ -83,9 +85,9 @@
 
     <!-- Mobile Navigation Panel -->
     <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="md:hidden bg-white border-b border-brand-100 px-4 pt-2 pb-4 space-y-1 shadow-lg" x-cloak>
-      <a href="../index" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">হোম</a>
+      <a href="../" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">হোম</a>
       <a href="../shop" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">শপ</a>
-      <a href="../index#categories" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">ক্যাটাগরি</a>
+      <a href="../#categories" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">ক্যাটাগরি</a>
       <a href="../about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">আমাদের সম্পর্কে</a>
       <a href="../blog" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">ব্লগ</a>
       <a href="../contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50 transition-colors">যোগাযোগ</a>
@@ -97,7 +99,7 @@
     <!-- Breadcrumbs -->
 <div class="bg-brand-50 border-b border-brand-100 py-4">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs sm:text-sm text-slate-500 font-sans">
-    <a href="../index" class="hover:text-brand-500 transition-colors">হোম</a>
+    <a href="../" class="hover:text-brand-500 transition-colors">হোম</a>
     <span class="mx-2">/</span>
     <span class="text-slate-800 font-medium">Traditional Sweets</span>
   </div>
@@ -251,9 +253,12 @@
         
         <!-- Brand Info -->
         <div class="space-y-4">
-          <span class="text-2xl font-bold font-serif text-white tracking-tight">
-            🌾 Chapai Fresh
-          </span>
+          <div class="flex items-center gap-2.5">
+            <img src="../images/logo/logo.png" alt="Chapai Fresh" class="w-9 h-9 object-contain">
+            <span class="text-2xl font-bold font-serif text-white tracking-tight">
+              Chapai Fresh
+            </span>
+          </div>
           <p class="text-sm text-brand-200/70 leading-relaxed font-sans">
             Chapai Fresh brings you the finest, 100% organic and pure delicacies directly from the fertile lands of Chapai Nawabganj. We are committed to authenticity and quality.
           </p>
@@ -264,6 +269,9 @@
             <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-brand-900 hover:bg-brand-700 text-white flex items-center justify-center transition-colors">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
+            <a href="https://tiktok.com" target="_blank" class="w-8 h-8 rounded-full bg-brand-900 hover:bg-brand-700 text-white flex items-center justify-center transition-colors" title="TikTok">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.42-.43-.6-.67-.06 2.52-.04 5.05-.05 7.57 0 2.2-.6 4.46-2.09 6.08-1.57 1.8-4.04 2.77-6.42 2.71-2.58-.02-5.18-1.22-6.57-3.44-1.51-2.31-1.56-5.5-.32-7.85 1.13-2.22 3.49-3.79 5.99-3.95v4.04c-1.12.08-2.25.56-2.92 1.47-.84 1.07-.82 2.67-.03 3.73.74 1.05 2.1 1.53 3.35 1.34 1.17-.14 2.18-1.07 2.45-2.22.15-.54.14-1.11.14-1.67-.01-3.64-.01-7.29-.01-10.93-.01-.13-.02-.27-.03-.4z"/></svg>
+            </a>
           </div>
         </div>
 
@@ -271,7 +279,7 @@
         <div class="space-y-4 font-sans">
           <h4 class="text-white text-base font-semibold tracking-wide font-sans">কুইক লিংক</h4>
           <ul class="space-y-2 text-sm text-brand-200/80">
-            <li><a href="../index" class="hover:text-white transition-colors">হোম</a></li>
+            <li><a href="../" class="hover:text-white transition-colors">হোম</a></li>
             <li><a href="../shop" class="hover:text-white transition-colors">শপ ক্যাটালগ</a></li>
             <li><a href="../about" class="hover:text-white transition-colors">আমাদের সম্পর্কে</a></li>
             <li><a href="../contact" class="hover:text-white transition-colors">যোগাযোগের বিবরণ</a></li>
@@ -475,6 +483,7 @@
         </div>
       </div>
     </div>
+  </div>
   <!-- Success Invoice Modal -->
   <div x-show="showInvoiceModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs print:p-0 print:bg-transparent" x-cloak>
     <div @click.away="showInvoiceModal = false" class="bg-white rounded-2xl shadow-2xl border border-brand-100 max-w-xl w-full max-h-[90vh] overflow-y-auto print:max-h-full print:border-none print:shadow-none print:rounded-none flex flex-col justify-between" id="printable-invoice">
@@ -482,7 +491,10 @@
       <!-- Invoice Header -->
       <div class="p-6 border-b border-brand-50 bg-brand-50/50 flex justify-between items-center print:border-b-2 print:border-slate-200">
         <div>
-          <span class="text-xl font-bold font-serif text-brand-600">🌾 Chapai Fresh</span>
+          <div class="flex items-center gap-2">
+            <img src="../images/logo/logo.png" alt="Chapai Fresh" class="w-6 h-6 object-contain">
+            <span class="text-xl font-bold font-serif text-brand-600">Chapai Fresh</span>
+          </div>
           <p class="text-xs text-slate-400 font-sans mt-0.5">খাঁটি ও সুস্বাদু খাবারের ঠিকানা</p>
         </div>
         <div class="text-right">
@@ -820,6 +832,101 @@
               document.body.removeChild(toast);
             }, 300);
           }, 3000);
+        }
+      };
+    }
+  </script>
+
+  <!-- Floating Live Chat Bubble -->
+  <div x-data="liveChatBubble()" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-sans" id="live-chat-widget">
+    
+    <!-- Chat Options Menu (expands upward) -->
+    <div x-show="isOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 translate-y-4 scale-90"
+         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+         x-transition:leave-end="opacity-0 translate-y-4 scale-90"
+         class="flex flex-col gap-2.5 mb-1"
+         x-cloak>
+
+      <!-- Header Label -->
+      <div class="bg-white rounded-2xl shadow-2xl border border-slate-100 px-5 py-4 w-72 chat-bubble-glass">
+        <p class="text-sm font-bold text-slate-800 mb-0.5">💬 আমাদের সাথে চ্যাট করুন</p>
+        <p class="text-[11px] text-slate-400 leading-relaxed">যেকোনো প্রশ্ন বা অর্ডার সংক্রান্ত সাহায্যের জন্য আমরা সবসময় প্রস্তুত!</p>
+      </div>
+
+      <!-- WhatsApp Button -->
+      <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
+         class="group flex items-center gap-3 bg-white hover:bg-emerald-50 rounded-2xl shadow-xl border border-slate-100 hover:border-emerald-200 px-5 py-3.5 w-72 transition-all duration-300 hover:shadow-emerald-100/50 hover:-translate-y-0.5">
+        <span class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shadow-md shadow-emerald-200 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.59 1.988 14.113.96 11.487.96c-5.438 0-9.863 4.372-9.867 9.802-.001 1.77.487 3.5 1.411 5.006l-1.002 3.66 3.753-.984zm13.195-7.854c-.29-.145-1.72-.848-1.987-.945-.266-.096-.46-.145-.654.145-.193.291-.748.945-.917 1.139-.17.194-.339.218-.629.073-.29-.145-1.228-.452-2.34-1.444-.865-.771-1.449-1.723-1.619-2.014-.17-.29-.018-.448.127-.592.13-.13.29-.339.435-.509.145-.17.193-.29.29-.485.097-.194.048-.364-.024-.509-.072-.145-.654-1.577-.896-2.158-.236-.569-.475-.492-.654-.501-.17-.008-.364-.01-.557-.01-.193 0-.509.073-.775.364-.266.29-1.017.994-1.017 2.425 0 1.431 1.041 2.814 1.186 3.008.145.194 2.049 3.128 4.964 4.385.694.3 1.236.479 1.659.613.698.222 1.334.191 1.837.116.56-.083 1.72-.703 1.962-1.382.242-.679.242-1.261.17-1.382-.072-.12-.266-.194-.557-.339z"/></svg>
+        </span>
+        <div>
+          <p class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">হোয়াটসঅ্যাপ</p>
+          <p class="text-[10px] text-slate-400">সাধারণত ১ ঘণ্টার মধ্যে উত্তর দিই</p>
+        </div>
+        <svg class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 ml-auto transition-all duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+      </a>
+
+      <!-- Facebook Messenger Button -->
+      <a :href="messengerLink" target="_blank" rel="noopener noreferrer"
+         class="group flex items-center gap-3 bg-white hover:bg-blue-50 rounded-2xl shadow-xl border border-slate-100 hover:border-blue-200 px-5 py-3.5 w-72 transition-all duration-300 hover:shadow-blue-100/50 hover:-translate-y-0.5">
+        <span class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md shadow-blue-200 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.193 14.963l-3.056-3.259-5.963 3.259L10.733 8.3l3.13 3.259L19.752 8.3l-6.559 6.663z"/></svg>
+        </span>
+        <div>
+          <p class="text-sm font-bold text-slate-800 group-hover:text-blue-700 transition-colors">মেসেঞ্জার</p>
+          <p class="text-[10px] text-slate-400">ফেসবুক মেসেঞ্জারে যোগাযোগ করুন</p>
+        </div>
+        <svg class="w-4 h-4 text-slate-300 group-hover:text-blue-500 ml-auto transition-all duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+      </a>
+    </div>
+
+    <!-- Main FAB Button -->
+    <button @click="isOpen = !isOpen" 
+            class="group relative w-14 h-14 bg-brand-500 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 focus:outline-none"
+            :class="isOpen ? '!bg-slate-800 hover:!bg-slate-700 shadow-slate-300/30' : 'hover:bg-brand-600 shadow-brand-400/40 chat-fab-pulse'"
+            aria-label="Live Chat Toggle">
+      <!-- Chat icon (shown when closed) -->
+      <svg x-show="!isOpen" class="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+      </svg>
+      <!-- Close icon (shown when open) -->
+      <svg x-show="isOpen" class="w-6 h-6 text-white transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" x-cloak>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      <!-- Notification dot (shown when closed) -->
+      <span x-show="!isOpen" class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-accent-orange rounded-full border-2 border-white animate-pulse"></span>
+    </button>
+  </div>
+
+  <script>
+    function liveChatBubble() {
+      return {
+        isOpen: false,
+        whatsappNumber: '01308995319',
+        facebookUrl: 'https://facebook.com',
+
+        get whatsappLink() {
+          let phone = this.whatsappNumber.replace(/\D/g, '');
+          if (phone.startsWith('0') && phone.length === 11) {
+            phone = '88' + phone;
+          }
+          return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent('আসসালামু আলাইকুম! আমি আপনাদের ওয়েবসাইট থেকে জানতে চাই...')}`;
+        },
+
+        get messengerLink() {
+          // Extract page ID or username from Facebook URL and build Messenger link
+          const fbUrl = this.facebookUrl || '';
+          if (fbUrl.includes('facebook.com')) {
+            // Convert facebook.com/pagename to m.me/pagename
+            const parts = fbUrl.replace(/\/+$/, '').split('/');
+            const pageId = parts[parts.length - 1];
+            return `https://m.me/${pageId}`;
+          }
+          return 'https://m.me/';
         }
       };
     }

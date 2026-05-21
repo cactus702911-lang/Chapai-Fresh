@@ -57,14 +57,28 @@ function compilePage(contentHTML, pageTitle, pageDesc, pathPrefix = '', activeNa
     footerCategoriesHTML += `<li><a href="${pathPrefix}category/${cat.id}" class="hover:text-white transition-colors">${cat.name}</a></li>\n`;
   });
 
+  const resolveAssetPath = (filePath) => {
+    if (!filePath) return '';
+    if (pathPrefix === '/') {
+      return '/' + filePath.replace(/^\//, '');
+    }
+    return pathPrefix + filePath;
+  };
+
+  const homeURL = pathPrefix === '../' ? '../' : '/';
+
   let html = layoutTemplate
     .replace(/\{\{CONTENT\}\}/g, contentHTML)
+    .replace(/\{\{PATH_PREFIX\}\}index/g, homeURL)
     .replace(/\{\{PAGE_TITLE\}\}/g, pageTitle)
     .replace(/\{\{PAGE_DESCRIPTION\}\}/g, pageDesc)
     .replace(/\{\{SITE_NAME\}\}/g, siteData.settings.siteName)
+    .replace(/\{\{LOGO_IMAGE\}\}/g, resolveAssetPath(siteData.settings.logoImage || 'images/logo/logo.png'))
+    .replace(/\{\{FAVICON_IMAGE\}\}/g, resolveAssetPath(siteData.settings.faviconImage || 'images/logo/favicon.png'))
     .replace(/\{\{FOOTER_ABOUT_TEXT\}\}/g, siteData.settings.footerAboutText)
     .replace(/\{\{FACEBOOK_URL\}\}/g, siteData.settings.facebookUrl)
     .replace(/\{\{INSTAGRAM_URL\}\}/g, siteData.settings.instagramUrl)
+    .replace(/\{\{TIKTOK_URL\}\}/g, siteData.settings.tiktokUrl || '')
     .replace(/\{\{CONTACT_ADDRESS\}\}/g, siteData.settings.address)
     .replace(/\{\{CONTACT_PHONE\}\}/g, siteData.settings.contactPhone)
     .replace(/\{\{CONTACT_EMAIL\}\}/g, siteData.settings.contactEmail)
@@ -388,7 +402,7 @@ siteData.products.forEach(prod => {
     .replace(/\{\{PRODUCT_CATEGORY_ID\}\}/g, cat.id)
     .replace(/\{\{PRODUCT_CATEGORY_NAME\}\}/g, cat.name)
     .replace(/\{\{PRODUCT_IMAGE\}\}/g, prod.image)
-    .replace(/\{\{PRODUCT_IMAGES_LIST_JSON\}\}/g, JSON.stringify(prod.images || [prod.image]).replace(/'/g, "\\'"))
+    .replace(/\{\{PRODUCT_IMAGES_LIST_JSON\}\}/g, JSON.stringify(prod.images || [prod.image]).replace(/'/g, "\\'").replace(/"/g, "'"))
     .replace(/\{\{PRODUCT_SCHEMA_JSON\}\}/g, productSchemaJSON)
     .replace(/\{\{PRODUCT_PRICE\}\}/g, prod.price)
     .replace(/\{\{PRODUCT_ORIGINAL_PRICE\}\}/g, prod.originalPrice)
@@ -413,6 +427,24 @@ siteData.products.forEach(prod => {
   );
 });
 
+// Clean up stale product pages in the product/ directory
+try {
+  const productFiles = fs.readdirSync(path.join(__dirname, 'product'));
+  const activeProductFiles = new Set(siteData.products.map(p => `${p.id}.html`));
+  productFiles.forEach(file => {
+    if (file.endsWith('.html') && !activeProductFiles.has(file)) {
+      try {
+        fs.unlinkSync(path.join(__dirname, 'product', file));
+        console.log(`Deleted stale product page: product/${file}`);
+      } catch (err) {
+        console.error(`Error deleting stale product page product/${file}:`, err.message);
+      }
+    }
+  });
+} catch (err) {
+  console.error('Error cleaning up product directory:', err.message);
+}
+
 // ----------------------------------------------------
 // BUILD STATIC PAGES (about.html, contact.html)
 // ----------------------------------------------------
@@ -427,7 +459,7 @@ fs.writeFileSync(
 );
 fs.writeFileSync(
   path.join(__dirname, '404.html'),
-  compilePage(error404Template, '৪০৪ - পেজটি পাওয়া যায়নি', 'দুঃখিত, পেজটি খুঁজে পাওয়া যায়নি!', '', '')
+  compilePage(error404Template, '৪০৪ - পেজটি পাওয়া যায়নি', 'দুঃখিত, পেজটি খুঁজে পাওয়া যায়নি!', '/', '')
 );
 
 // ----------------------------------------------------

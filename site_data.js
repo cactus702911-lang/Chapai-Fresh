@@ -8,9 +8,12 @@ const siteData = {
     "address": "Boro Indara Mor, Chapai Nawabganj Sadar, Bangladesh",
     "facebookUrl": "https://facebook.com",
     "instagramUrl": "https://instagram.com",
+    "tiktokUrl": "https://tiktok.com",
     "footerAboutText": "Chapai Fresh brings you the finest, 100% organic and pure delicacies directly from the fertile lands of Chapai Nawabganj. We are committed to authenticity and quality.",
     "insideChapaiDeliveryFee": 60,
-    "outsideChapaiDeliveryFee": 130
+    "outsideChapaiDeliveryFee": 130,
+    "logoImage": "images/logo/logo.png",
+    "faviconImage": "images/logo/favicon.png"
   },
   "categories": [
     {
