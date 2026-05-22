@@ -78,7 +78,7 @@
           <div class="absolute inset-0 bg-amber-500/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
           <img :src="data.settings.logoImage ? data.settings.logoImage : 'images/logo/logo.png'" 
                alt="Logo" 
-               class="relative w-20 h-20 object-contain rounded-2xl bg-white p-2 border border-slate-200 shadow-md group-hover:scale-105 transition-transform duration-300">
+               class="relative w-20 h-20 object-contain rounded-2xl bg-transparent group-hover:scale-105 transition-transform duration-300">
         </div>
         <h2 class="text-3xl font-extrabold font-serif text-black tracking-tight" 
             x-text="(data.settings.siteName || 'Chapai Fresh') + ' CMS'"></h2>
@@ -143,7 +143,7 @@
       <!-- Title -->
       <div class="p-6 border-b border-brand-950/50">
         <h1 class="text-lg font-bold font-serif text-white flex items-center gap-2">
-          <img :src="data.settings.logoImage ? data.settings.logoImage : 'images/logo/logo.png'" alt="Logo" class="w-6 h-6 object-contain bg-white rounded-md p-0.5 flex-shrink-0">
+          <img :src="data.settings.logoImage ? data.settings.logoImage : 'images/logo/logo.png'" alt="Logo" class="w-6 h-6 object-contain bg-transparent flex-shrink-0">
           <span x-text="data.settings.siteName || 'Chapai Fresh'"></span>
         </h1>
         <p class="text-[10px] text-brand-300 mt-0.5">Local Administration Panel</p>
@@ -332,7 +332,7 @@
                 <div class="space-y-1">
                   <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Website Logo</label>
                   <div class="flex items-center gap-4 p-3 border border-slate-200 rounded-lg bg-slate-50/50">
-                    <img :src="data.settings.logoImage ? data.settings.logoImage : 'images/logo/logo.png'" alt="Logo Preview" class="w-12 h-12 object-contain bg-white rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
+                    <img :src="data.settings.logoImage ? data.settings.logoImage : 'images/logo/logo.png'" alt="Logo Preview" class="w-12 h-12 object-contain bg-transparent rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
                     <div class="flex-grow">
                       <input type="file" accept="image/*" @change="handleLogoUpload($event)" class="text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-600 hover:file:bg-brand-100 cursor-pointer w-full">
                       <p class="text-[10px] text-slate-400 mt-1">Recommended square PNG or SVG with transparent background.</p>
@@ -344,7 +344,7 @@
                 <div class="space-y-1">
                   <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Website Favicon</label>
                   <div class="flex items-center gap-4 p-3 border border-slate-200 rounded-lg bg-slate-50/50">
-                    <img :src="data.settings.faviconImage ? data.settings.faviconImage : 'images/logo/favicon.png'" alt="Favicon Preview" class="w-8 h-8 object-contain bg-white rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
+                    <img :src="data.settings.faviconImage ? data.settings.faviconImage : 'images/logo/favicon.png'" alt="Favicon Preview" class="w-8 h-8 object-contain bg-transparent rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
                     <div class="flex-grow">
                       <input type="file" accept="image/*" @change="handleFaviconUpload($event)" class="text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-600 hover:file:bg-brand-100 cursor-pointer w-full">
                       <p class="text-[10px] text-slate-400 mt-1">Recommended square image (.png or .ico) - 32x32px or 64x64px.</p>
