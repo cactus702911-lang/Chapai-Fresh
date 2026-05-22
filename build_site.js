@@ -65,7 +65,7 @@ function compilePage(contentHTML, pageTitle, pageDesc, pathPrefix = '', activeNa
     return pathPrefix + filePath;
   };
 
-  const homeURL = pathPrefix === '../' ? '../home' : '/home';
+  const homeURL = pathPrefix === '../' ? '../home' : 'home';
 
   let html = layoutTemplate
     .replace(/\{\{CONTENT\}\}/g, contentHTML)
