@@ -466,7 +466,25 @@ fs.writeFileSync(
 );
 fs.writeFileSync(
   path.join(__dirname, '404.html'),
-  compilePage(error404Template, '৪০৪ - পেজটি পাওয়া যায়নি', 'দুঃখিত, পেজটি খুঁজে পাওয়া যায়নি!', '/', '')
+  compilePage(
+    error404Template, 
+    '৪০৪ - পেজটি পাওয়া যায়নি', 
+    'দুঃখিত, পেজটি খুঁজে পাওয়া যায়নি!', 
+    '', 
+    '', 
+    `<script>
+      (function() {
+        var path = window.location.pathname;
+        var baseHref = '/';
+        if (path.includes('/Chapai-Fresh/')) {
+          baseHref = '/Chapai-Fresh/';
+        }
+        var base = document.createElement('base');
+        base.href = window.location.origin + baseHref;
+        document.head.insertBefore(base, document.head.firstChild);
+      })();
+    </script>`
+  )
 );
 
 // ----------------------------------------------------
