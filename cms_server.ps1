@@ -31,7 +31,7 @@ function Get-MimeType ($extension) {
 try {
     $listener.Start()
     Write-Host "==========================================================" -ForegroundColor Green
-    Write-Host "🌾 Chapai Fresh CMS Local Server Started!" -ForegroundColor Green
+    Write-Host "🌳 Chapai Fresh CMS Local Server Started!" -ForegroundColor Green
     Write-Host "👉 Admin Panel:   http://localhost:$port/admin" -ForegroundColor Cyan
     Write-Host "👉 Store Frontend: http://localhost:$port/" -ForegroundColor Cyan
     Write-Host "Press Ctrl+C in this terminal window to stop the server." -ForegroundColor Yellow
